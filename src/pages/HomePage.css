@@ -9,7 +9,13 @@ body {
   margin: 0 auto;
   padding: 0 16px;
 }
-
+.h1{
+  position: fixed;
+    background: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  width: 100%;
+}
 .text-center {
   text-align: center;
 }
@@ -19,7 +25,8 @@ body {
   background: white;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  padding: 16px 0;
+  /* position: fixed; */
+  /* padding: 16px 0; */
 }
 
 .header-inner {

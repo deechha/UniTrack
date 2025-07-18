@@ -44,7 +44,7 @@ function Login() {
 
         const { role } = jwtDecode(token);
 
-        if (role === "Admin") navigate("/admin-dashboard");
+        if (role === "Admin") navigate("/admin");
         else if (role === "Coordinator") navigate("/coordinator-dashboard");
         else navigate("/student-dashboard");
       } else {

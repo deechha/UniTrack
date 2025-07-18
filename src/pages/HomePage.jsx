@@ -8,7 +8,7 @@ export default function HomePage() {
         <div className="container header-inner">
           <div className="logo">
              <img src="logo.jpg"/>
-            <h1>UniTrack</h1>
+            <h1>UniTracker</h1>
           </div>
           <div className="nav-buttons">
             <a href="/login" className="btn-outline">Login</a>

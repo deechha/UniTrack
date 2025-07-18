@@ -5,6 +5,9 @@ import StudentDashboard from "./pages/StudentDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import CoordinatorDashboard from "./pages/CoordinatorDashboard";
 import HomePage from "./pages/HomePage";
+import Dashboard from "./pages/admin/Dashboard";
+import Reports from "./pages/admin/Reports";
+
 
 
 const App = () => {
@@ -14,7 +17,12 @@ const App = () => {
         <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/student-dashboard" element={<StudentDashboard/>} />
-        <Route path="/admin-dashboard" element={<AdminDashboard/>} />
+        {/* <Route path="/admin-dashboard/*" element={<AdminDashboard/>} /> */}
+            <Route path="/admin" element={<AdminDashboard/>}>
+          <Route index element={<Dashboard/>} /> 
+          <Route path="reports" element={<Reports/>} />
+
+        </Route>
         <Route path="/coordinator-dashboard" element={<CoordinatorDashboard/>} />
       </Routes>
     </Router>
