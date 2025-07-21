@@ -8,6 +8,8 @@ import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/admin/Dashboard";
 import Reports from "./pages/admin/Reports";
 import CreateEvent from "./components/CreateEvent";
+import Budget from "./pages/admin/Budget";
+import Calender from "./pages/admin/Calender";
 
 
 
@@ -22,6 +24,10 @@ const App = () => {
             <Route path="/admin" element={<AdminDashboard/>}>
           <Route index element={<Dashboard/>} /> 
           <Route path="reports" element={<Reports/>} />
+          <Route path="budget" element={<Budget/>}/>
+          <Route  path="calender" element={<Calender/>}/>
+          {/* <Route path="" */}
+
            <Route path="/admin/create-event" element={<CreateEvent/>} />
 
         </Route>
