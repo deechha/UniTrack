@@ -10,6 +10,10 @@ import Reports from "./pages/admin/Reports";
 import CreateEvent from "./components/CreateEvent";
 import Budget from "./pages/admin/Budget";
 import Calender from "./pages/admin/Calender";
+import Volunteer from "./pages/admin/Volunteer";
+import Notification from "./pages/admin/Notification";
+import CreateVolunteer from "./components/CreateVolunteer";
+import CreateVTeam from "./components/CreateVTeam";
 
 
 
@@ -25,10 +29,15 @@ const App = () => {
           <Route index element={<Dashboard/>} /> 
           <Route path="reports" element={<Reports/>} />
           <Route path="budget" element={<Budget/>}/>
-          <Route  path="calender" element={<Calender/>}/>
-          {/* <Route path="" */}
+          <Route  path="calendar" element={<Calender/>}/>
+          <Route  path="volunteer" element={<Volunteer/>}/>
+          <Route path="notifications" element={<Notification/>}/>
+
 
            <Route path="/admin/create-event" element={<CreateEvent/>} />
+           <Route path="/admin/create-volunteer" element={<CreateVolunteer/>}/>
+           <Route path="/admin/create-team" element={<CreateVTeam/>}/>
+
 
         </Route>
         <Route path="/coordinator-dashboard" element={<CoordinatorDashboard/>} />

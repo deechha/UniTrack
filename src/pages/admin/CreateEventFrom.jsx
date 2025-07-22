@@ -10,7 +10,10 @@ export default function CreateEventForm() {
     status: "",
     location: "",
     createdAt: new Date().toISOString(),
-    faculty: ""
+    faculty: "",
+    scope: "",
+    typeOfEvent: "",
+    objective: "",
   });
 
   const handleChange = (e) => {
@@ -21,7 +24,7 @@ export default function CreateEventForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://localhost:7123/api/Event", formData); // Update to match your backend
+      await axios.post("https://localhost:7123/api/Event", formData); // Update your backend API
       alert("Event created successfully!");
     } catch (err) {
       console.error("Error creating event:", err);
@@ -29,6 +32,7 @@ export default function CreateEventForm() {
     }
   };
 
+  // Inline styles
   const formStyle = {
     maxWidth: "600px",
     margin: "40px auto",
@@ -69,7 +73,7 @@ export default function CreateEventForm() {
       <input type="text" name="title" value={formData.title} onChange={handleChange} required style={inputStyle} />
 
       <label style={labelStyle}>Description</label>
-      <textarea name="description" value={formData.description} onChange={handleChange} style={inputStyle} rows="4" />
+      <textarea name="description" value={formData.description} onChange={handleChange} style={inputStyle} rows="3" />
 
       <label style={labelStyle}>Start Date</label>
       <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} required style={inputStyle} />
@@ -84,10 +88,32 @@ export default function CreateEventForm() {
       <input type="text" name="location" value={formData.location} onChange={handleChange} required style={inputStyle} />
 
       <label style={labelStyle}>Faculty</label>
-      <input type="text" name="faculty" value={formData.faculty} onChange={handleChange} required style={inputStyle} />
+      <select name="faculty" value={formData.faculty} onChange={handleChange} required style={inputStyle}>
+        <option value=""> Select Faculty </option>
+        <option value="BSc CSIT">BSc CSIT</option>
+        <option value="BIM">BIM</option>
+        <option value="BCA">BCA</option>
+        <option value="BBS">BBS</option>
+        <option value="HM">HM</option>
+      </select>
+
+      <label style={labelStyle}>Scope</label>
+      <select name="scope" value={formData.scope} onChange={handleChange} required style={inputStyle}>
+        <option value=""> Select Scope </option>
+        <option value="Intercollege">Intercollege</option>
+        <option value="College Level">College Level</option>
+        <option value="Faculty Level">Faculty Level</option>
+      </select>
+
+      <label style={labelStyle}>Type of Event</label>
+      <input type="text" name="typeOfEvent" value={formData.typeOfEvent} onChange={handleChange} required style={inputStyle} />
+
+      <label style={labelStyle}>Objective</label>
+      <textarea name="objective" value={formData.objective} onChange={handleChange} style={inputStyle} rows="4" required />
 
       <button type="submit" style={buttonStyle}>Submit</button>
     </form>
   );
 }
+
 

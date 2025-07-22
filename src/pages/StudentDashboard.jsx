@@ -1,16 +1,13 @@
 
 
 const StudentDashboard = () => {
-  const semester = localStorage.getItem("semester");
-
   return (
-    <div>
-      <h2>Student Dashboard</h2>
-      <p>Semester: {semester}</p>
+    <>
+      StudentDashboard
+    </>
+  )
+}
 
-    </div>
-  );
-};
+export default StudentDashboard
 
-export default StudentDashboard;
 

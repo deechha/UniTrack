@@ -52,18 +52,12 @@ const navigate = useNavigate();
           }
         }
       `}</style>
-
-      {/* Header */}
       <div style={styles.header}>
         <div>
           <h1 style={styles.title}>Admin Dashboard</h1>
           <p style={styles.subtitle}>Manage events, budgets, reports and volunteers</p>
         </div>
         <div style={styles.buttonGroup}>
-          {/* <button style={{ ...styles.button, ...styles.primaryButton }}>
-            <FontAwesomeIcon icon={faPlus} style={styles.icon} />
-            Create Event
-          </button> */}
             <button
         onClick={() => navigate("/admin/create-event")}
         style={{ ...styles.button, ...styles.primaryButton }}
@@ -72,8 +66,6 @@ const navigate = useNavigate();
       </button>
         </div>
       </div>
-
-      {/* Stats Grid */}
       <div style={styles.statsGrid} className="stats-grid">
         {stats.map((stat, index) => (
           <div key={index} style={styles.card}>
