@@ -7,8 +7,8 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("https://localhost:7123/api/Event"); // Adjust URL if needed
-        setEvents(response.data);
+        const response = await axios.get("http://localhost:5226/api/Events");
+        setEvents(response.data.data || []);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
@@ -17,11 +17,10 @@ export default function AdminDashboard() {
     fetchEvents();
   }, []);
 
-  // Style definitions
   const styles = {
     container: {
       maxWidth: "1000px",
-      margin: "40px auto",
+    margin: "80px auto 40px auto",
       padding: "20px",
       fontFamily: "Arial, sans-serif",
     },
@@ -39,12 +38,19 @@ export default function AdminDashboard() {
       marginBottom: "15px",
       backgroundColor: "#f9f9f9",
       boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+      // position: "relative",
     },
     title: {
       fontSize: "20px",
       fontWeight: "600",
-      marginBottom: "10px",
+      marginBottom: "6px",
       color: "#2563eb",
+    },
+    description: {
+      fontSize: "16px",
+      fontStyle: "italic",
+      marginBottom: "10px",
+      color: "#333",
     },
     text: {
       marginBottom: "6px",
@@ -56,30 +62,36 @@ export default function AdminDashboard() {
       color: "#888",
       marginTop: "10px",
     },
+    statusContainer: {
+      display: "flex",
+      justifyContent: "flex-end",
+      marginBottom: "6px",
+    },
     statusBadge: {
       padding: "6px 12px",
       borderRadius: "8px",
       color: "#fff",
       fontWeight: "bold",
       display: "inline-block",
-      marginBottom: "6px",
     },
   };
 
-  // Helper function to get status color
   const getStatusStyle = (status) => {
     const base = { ...styles.statusBadge };
-    switch (status.toLowerCase()) {
+    switch (status?.toLowerCase()) {
       case "ongoing":
-        return { ...base, backgroundColor: "#4caf50" }; // Green
+      case "active":
+        return { ...base, backgroundColor: "#4caf50" };
       case "completed":
-        return { ...base, backgroundColor: "#2196f3" }; // Blue
-      case "pending":
-        return { ...base, backgroundColor: "#ffc107", color: "#000" }; // Yellow
+        return { ...base, backgroundColor: "#2196f3" };
+      case "planned":
+        return { ...base, backgroundColor: "#c94394ff" };
+      case "upcoming":
+        return { ...base, backgroundColor: "#ecf235ff" };
       case "cancelled":
-        return { ...base, backgroundColor: "#f44336" }; // Red
+        return { ...base, backgroundColor: "#f44336" };
       default:
-        return base;
+        return { ...base, backgroundColor: "#9e9e9e" };
     }
   };
 
@@ -91,27 +103,29 @@ export default function AdminDashboard() {
         <p>No events found.</p>
       ) : (
         events.map((event) => (
-          <div key={event.id} style={styles.card}>
-            <h2 style={styles.title}>{event.title}</h2>
-            <p style={styles.text}><strong>Description:</strong> {event.description}</p>
-            <p style={styles.text}><strong>Start Date:</strong> {event.startDate}</p>
-            <p style={styles.text}><strong>End Date:</strong> {event.endDate}</p>
-
-            <div style={getStatusStyle(event.status)}>
-              {event.status}
+          <div key={event.eventId} style={styles.card}>
+            <div style={styles.statusContainer}>
+              <div style={getStatusStyle(event.eventStatus)}>
+                {event.eventStatus}
+              </div>
             </div>
-
-            <p style={styles.text}><strong>Location:</strong> {event.location}</p>
-            <p style={styles.text}><strong>Faculty:</strong> {event.faculty}</p>
-            <p style={styles.text}><strong>Scope:</strong> {event.scope}</p>
-            <p style={styles.text}><strong>Type of Event:</strong> {event.typeOfEvent}</p>
-            <p style={styles.text}><strong>Objective:</strong> {event.objective}</p>
-            <p style={styles.smallText}>Created At: {new Date(event.createdAt).toLocaleString()}</p>
+            <h2 style={styles.title}>{event.title}</h2>
+            <p style={styles.description}>
+              {event.description || "No description provided."}
+            </p>
+            <p style={styles.text}><strong>Objective:</strong> {event.objective || "N/A"}</p>
+            <p style={styles.text}><strong>Start Date:</strong> {new Date(event.startDate).toLocaleString()}</p>
+            <p style={styles.text}><strong>End Date:</strong> {new Date(event.endDate).toLocaleString()}</p>
+            <p style={styles.text}><strong>Location:</strong> {event.location || "N/A"}</p>
+            <p style={styles.text}><strong>Faculty:</strong> {event.faculty || "N/A"}</p>
+            <p style={styles.text}><strong>Scope:</strong> {event.eventScope || "N/A"}</p>
+            <p style={styles.text}><strong>Type of Event:</strong> {event.eventType || "N/A"}</p>
+            <p style={styles.smallText}>
+              Created At: {event.createdAt ? new Date(event.createdAt).toLocaleString() : "N/A"}
+            </p>
           </div>
         ))
       )}
     </div>
   );
 }
-
-
