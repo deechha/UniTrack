@@ -31,7 +31,7 @@ const handleSubmit = async (e) => {
   try {
     if (isLogin) {
       const res = await axios.post(
-        "http://localhost:5026/api/Auth/login",
+        "http://localhost:5226/api/Auth/login",
         {
           username: form.username,
           password: form.password,
@@ -47,8 +47,16 @@ const handleSubmit = async (e) => {
       else if (role === "Coordinator") navigate("/coordinator-dashboard");
       else navigate("/student");
     } else {
+<<<<<<< HEAD
       await axios.post("http://localhost:5026/api/Auth/register", form);
       const res = await axios.post("http://localhost:5026/api/Auth/login", {
+=======
+      // Step 1: Register the user
+      await axios.post("http://localhost:5226/api/Auth/register", form);
+
+      // Step 2: Automatically login after registration
+      const res = await axios.post("http://localhost:5226/api/Auth/login", {
+>>>>>>> 773aa67f10a36d8df3703b4b85f8c8ac8aa33983
         username: form.username,
         password: form.password,
       });
