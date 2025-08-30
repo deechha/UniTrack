@@ -12,7 +12,6 @@ export default function HomePage() {
           </div>
           <div className="nav-buttons">
             <a href="/login" className="btn-outline">Login</a>
-            {/* <a href="/register" className="btn">Register</a> */}
           </div>
         </div>
       </header>
@@ -75,7 +74,7 @@ export default function HomePage() {
 
       <footer className="footer">
         <div className="container text-center">
-          <p>&copy; 2024 College Event Tracker. All rights reserved.</p>
+          <p>&copy; 2025 College Event Tracker. All rights reserved.</p>
         </div>
       </footer>
     </div>

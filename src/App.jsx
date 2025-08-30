@@ -14,6 +14,16 @@ import Volunteer from "./pages/admin/Volunteer";
 import Notification from "./pages/admin/Notification";
 import CreateVolunteer from "./components/CreateVolunteer";
 import CreateVTeam from "./components/CreateVTeam";
+import Gallery from "./pages/student/Gallery";
+import Events from "./pages/student/Events";
+import Notifications from "./pages/student/Notifications";
+import SHero from "./pages/student/SHero";
+import Calendar from "./pages/student/Calendar";
+import CGallery from "./pages/coordinator/CGallery";
+import CEvents from "./pages/coordinator/CEvents";
+import CCalendar from "./pages/coordinator/CCalendar";
+import CReports from "./pages/coordinator/CReports";
+import CHero from "./pages/coordinator/CHero";
 
 
 
@@ -23,24 +33,36 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/student-dashboard" element={<StudentDashboard/>} />
-        {/* <Route path="/admin-dashboard/*" element={<AdminDashboard/>} /> */}
-            <Route path="/admin" element={<AdminDashboard/>}>
+
+        <Route path="/student" element={<StudentDashboard/>}>
+         <Route index element={<SHero/>} />
+        <Route path="gallery" element={<Gallery/>}/>
+        <Route path="events" element={<Events/>}/>
+        <Route path="notifications" element={<Notifications/>}/>
+        <Route path="calendar" element={<Calendar/>}/>
+        </Route>
+
+         <Route path="/admin" element={<AdminDashboard/>}>
           <Route index element={<Dashboard/>} /> 
           <Route path="reports" element={<Reports/>} />
           <Route path="budget" element={<Budget/>}/>
           <Route  path="calendar" element={<Calender/>}/>
           <Route  path="volunteer" element={<Volunteer/>}/>
           <Route path="notifications" element={<Notification/>}/>
-
-
            <Route path="/admin/create-event" element={<CreateEvent/>} />
            <Route path="/admin/create-volunteer" element={<CreateVolunteer/>}/>
            <Route path="/admin/create-team" element={<CreateVTeam/>}/>
-
-
         </Route>
-        <Route path="/coordinator-dashboard" element={<CoordinatorDashboard/>} />
+        
+        <Route path="/coordinator" element={<CoordinatorDashboard/>}>
+        <Route index element={<CHero/>}/>
+        <Route path="gallery" element={<CGallery/>}/>
+        <Route path="events" element={<CEvents/>}/>
+        <Route path="calendar" element={<CCalendar/>}/>
+        <Route path="report" element={<CReports/>}/>
+        <Route path="notifications" element={<Notifications/>}/>
+        </Route>
+
       </Routes>
     </Router>
   );

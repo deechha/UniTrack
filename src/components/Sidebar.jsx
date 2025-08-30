@@ -7,7 +7,7 @@ const sidebarStyle = {
   boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
   height: "100vh",
   position: "fixed",
-  top: "100px", // below navbar
+  top: "100px",
   left: 0,
   overflowY: "auto",
 };

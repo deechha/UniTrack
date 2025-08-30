@@ -35,7 +35,6 @@ const handleSubmit = async (e) => {
     await axios.post("http://localhost:5226/api/Events", payload);
     alert("Event created successfully!");
   } catch (err) {
-    // Try to get backend error message:
     const backendMessage = err.response?.data?.message || "Unknown error";
     const backendErrors = err.response?.data?.errors || [];
 
@@ -45,9 +44,6 @@ const handleSubmit = async (e) => {
   }
 };
 
-
-
-  // Inline styles (same as before)
   const formStyle = {
     maxWidth: "600px",
     margin: "40px auto",

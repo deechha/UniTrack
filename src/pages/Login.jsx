@@ -45,12 +45,9 @@ const handleSubmit = async (e) => {
 
       if (role === "Admin") navigate("/admin");
       else if (role === "Coordinator") navigate("/coordinator-dashboard");
-      else navigate("/student-dashboard");
+      else navigate("/student");
     } else {
-      // Step 1: Register the user
       await axios.post("http://localhost:5026/api/Auth/register", form);
-
-      // Step 2: Automatically login after registration
       const res = await axios.post("http://localhost:5026/api/Auth/login", {
         username: form.username,
         password: form.password,
@@ -60,49 +57,15 @@ const handleSubmit = async (e) => {
       localStorage.setItem("token", token);
 
       const { role } = jwtDecode(token);
-
-      // Step 3: Navigate based on role
       if (role === "Admin") navigate("/admin");
-      else if (role === "Coordinator") navigate("/coordinator-dashboard");
-      else navigate("/student-dashboard");
+      else if (role === "Coordinator") navigate("/coordinator");
+      else navigate("/student");
     }
   } catch (error) {
     alert(error.response?.data || "Something went wrong");
   }
 };
 
-
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     if (isLogin) {
-  //       const res = await axios.post(
-  //         "http://localhost:5026/api/Auth/login",
-  //         {
-  //           username: form.username,
-  //           password: form.password,
-  //         },
-  //         // { withCredentials: true }
-  //       );
-
-  //       const token = res.data.token;
-  //       localStorage.setItem("token", token);
-
-  //       const { role } = jwtDecode(token);
-
-  //       if (role === "Admin") navigate("/admin");
-  //       else if (role === "Coordinator") navigate("/coordinator-dashboard");
-  //       else navigate("/student-dashboard");
-  //     } else {
-  //       await axios.post("http://localhost:5026/api/Auth/register", form);
-  //       alert("Registered successfully. You can now log in.");
-  //       setIsLogin(true);
-  //     }
-  //   } catch (error) {
-  //     alert(error.response?.data || "Something went wrong");
-  //   }
-  // };
 
   return (
     <div style={styles.wrapper}>
@@ -201,7 +164,6 @@ const styles = {
     flexWrap: "wrap",
   },
   imageSection: {
-    // flex: 1,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

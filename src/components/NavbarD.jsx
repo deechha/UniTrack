@@ -10,7 +10,6 @@ const NavbarD = () => {
           </div>
           <div className="nav-buttons">
             <a href="/login" className="btn-outline">Logout</a>
-            {/* <a href="/register" className="btn">Register</a> */}
           </div>
         </div>
       </header>

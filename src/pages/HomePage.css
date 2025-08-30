@@ -20,13 +20,10 @@ body {
   text-align: center;
 }
 
-/* Header */
 .header {
   background: white;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  /* position: fixed; */
-  /* padding: 16px 0; */
 }
 
 .header-inner {
@@ -75,7 +72,7 @@ body {
   padding: 12px 24px;
 }
 
-/* Hero Section */
+
 .hero {
   padding: 80px 0;
 }
@@ -93,7 +90,7 @@ body {
   margin: 0 auto 30px;
 }
 
-/* Features Section */
+
 .features {
   background: white;
   padding: 60px 0;
@@ -136,7 +133,7 @@ body {
   color: #4b5563;
 }
 
-/* Footer */
+
 .footer {
   background: #1f2937;
   color: white;

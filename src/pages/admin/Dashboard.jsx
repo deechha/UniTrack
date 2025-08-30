@@ -18,25 +18,25 @@ const navigate = useNavigate();
       title: "Total Events",
       value: "24",
       icon: faCalendar,
-      color: "#2563EB", // blue
+      color: "#2563EB", 
     },
     {
       title: "Active Volunteers",
       value: "156",
       icon: faUsers,
-      color: "#16A34A", // green
+      color: "#16A34A", 
     },
     {
       title: "Estimated Budget",
       value: "₹2,45,000",
       icon: faDollarSign,
-      color: "#7C3AED", // purple
+      color: "#7C3AED", 
     },
     {
      title: "Utilized Budget",
       value: "₹2,45,000",
       icon: faDollarSign,
-      color: "#7C3AED", // orange
+      color: "#7C3AED", 
     },
   ]
 
@@ -44,7 +44,6 @@ const navigate = useNavigate();
     <div className="manage">
 
     <div style={styles.container}>
-      {/* Responsive media query style */}
       <style>{`
         @media (max-width: 768px) {
           .stats-grid {
@@ -86,7 +85,6 @@ const navigate = useNavigate();
   )
 }
 
-// ✅ Inline CSS styles
 const styles = {
   container: {
     padding: "20px",
@@ -136,7 +134,7 @@ const styles = {
   },
   statsGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)", // 2 columns always unless overridden
+    gridTemplateColumns: "repeat(2, 1fr)", 
     gap: "20px",
   },
   card: {
